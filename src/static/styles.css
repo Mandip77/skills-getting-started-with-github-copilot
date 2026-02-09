@@ -99,6 +99,7 @@ section h3 {
   padding: 4px 0;
   color: #555;
   font-size: 0.95em;
+  list-style-type: none;
 }
 
 .participants-list li em {
