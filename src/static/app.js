@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const signupForm = document.getElementById("signup-form");
   const messageDiv = document.getElementById("message");
 
-  // Function to fetch activities from API
+    // Function to fetch activities from API
   async function fetchActivities() {
     try {
       const response = await fetch("/activities");
@@ -90,6 +90,45 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+    function renderParticipants(participants) {
+        const participantsList = document.getElementById('participants-list');
+        participantsList.innerHTML = '';
+        participants.forEach((participant, idx) => {
+            const li = document.createElement('li');
+            li.style.listStyleType = 'none'; // Hide bullet points
+            li.style.display = 'flex';
+            li.style.alignItems = 'center';
+          
+            const nameSpan = document.createElement('span');
+            nameSpan.textContent = participant;
+            nameSpan.style.flex = '1';
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.innerHTML = '🗑️';
+            deleteBtn.title = 'Remove participant';
+            deleteBtn.style.marginLeft = '8px';
+            deleteBtn.style.background = 'none';
+            deleteBtn.style.border = 'none';
+            deleteBtn.style.cursor = 'pointer';
+            deleteBtn.style.fontSize = '1em';
+            deleteBtn.addEventListener('click', () => {
+                unregisterParticipant(participant);
+            });
+
+            li.appendChild(nameSpan);
+            li.appendChild(deleteBtn);
+            participantsList.appendChild(li);
+        });
+    }
+
+    function unregisterParticipant(name) {
+        // Remove participant from the list and re-render
+        if (window.participants) {
+            window.participants = window.participants.filter(p => p !== name);
+            renderParticipants(window.participants);
+        }
+        // TODO: Add backend unregister logic if needed
+    }
   // Initialize app
   fetchActivities();
 });
