@@ -1,3 +1,9 @@
+
+#participants-list {
+  margin-top: 1em;
+  padding-left: 0;
+  list-style-type: none; /* Hide bullet points */
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -72,6 +78,33 @@ section h3 {
 
 .activity-card p {
   margin-bottom: 8px;
+}
+
+.participants-section {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+  background-color: #f0f7ff;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.participants-list {
+  margin: 8px 0 0 20px;
+  padding-left: 0;
+  list-style-position: inside;
+}
+
+.participants-list li {
+  padding: 4px 0;
+  color: #555;
+  font-size: 0.95em;
+  list-style-type: none;
+}
+
+.participants-list li em {
+  color: #999;
+  font-style: italic;
 }
 
 .form-group {
